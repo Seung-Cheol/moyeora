@@ -46,10 +46,6 @@ public class DefaultSchoolClassService implements SchoolClassService {
   public void add(SchoolClass clazz) {
 
     schoolClassDao.add(clazz);
-    System.out.println("$$$$$$$$$$$$$$$$$$$" + clazz.getSchoolNo());
-    System.out.println("$$$$$$$$$$$$$$$$$$$" + clazz.getUserNo());
-    System.out.println("$$$$$$$$$$$$$$$$$$$" + clazz.getNo());
-    System.out.println("=================================================");
 
     SchoolClassRequestDTO schoolClassRequestDTO = new SchoolClassRequestDTO();
     schoolClassRequestDTO.setSchoolNo(clazz.getSchoolNo());
@@ -57,9 +53,6 @@ public class DefaultSchoolClassService implements SchoolClassService {
     schoolClassRequestDTO.setUserNo(clazz.getUserNo());
 
     classUserDao.insert(schoolClassRequestDTO);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + clazz.getUserNo());
-    System.out.println("$$$$$$$$$$$$$$$$$$$$444$$$" + clazz.getSchoolNo());
-    System.out.println("#########################" + clazz.getNo());
   }
 
 
@@ -79,9 +72,6 @@ public class DefaultSchoolClassService implements SchoolClassService {
   @Override
   public SchoolClass get(int classNo) {
     SchoolClass sc = schoolClassDao.findByNo(classNo);
-    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    System.out.println(sc);
-    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
     return sc;
 
@@ -90,32 +80,18 @@ public class DefaultSchoolClassService implements SchoolClassService {
   @Override
   public void insert(SchoolClassRequestDTO schoolClassRequestDTO) {
     classUserDao.insert(schoolClassRequestDTO);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    System.out.println(schoolClassRequestDTO);
-    System.out.println("#########################");
   }
 
 
   @Override
   public void memberDelete(SchoolClassRequestDTO schoolClassRequestDTO) {
     classUserDao.memberDelete(schoolClassRequestDTO);
-    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    System.out.println(schoolClassRequestDTO);
-    System.out.println("#########################");
   }
 
   @Override
   public void classDelete(ClassDeleteDTO classDeleteDTO) {
     SchoolClassRequestDTO schoolClassRequestDTO = new SchoolClassRequestDTO();
-
-
-    System.out.println("@@@@@@@@@@@@");
-    System.out.println(classDeleteDTO);
-    System.out.println("======================");
-
-
     schoolClassDao.classDelete(classDeleteDTO);
-
   }
 
   @Override

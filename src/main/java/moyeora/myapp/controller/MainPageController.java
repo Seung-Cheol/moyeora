@@ -45,10 +45,11 @@ public class MainPageController {
       model.addObject("schoolCreatedAt", schoolService.findByUserNo(loginUser.getNo()).getCreatedAt());
   }
       model.addObject("address", userService.getAddress(loginUser.getNo()));
-    model.addObject("weeks", schoolService.findWeek());
-    model.addObject("hotSchools", schoolService.findHotSchool(loginUser.getNo()));
-        model.addObject("loginUser", loginUser);
-        model.setViewName("index");
+      model.addObject("weeks", schoolService.findWeek());
+      model.addObject("hotSchools", schoolService.findHotSchool(loginUser.getNo()));
+        model.addObject("hotSchools2", schoolService.findHotSchool(loginUser.getNo()));
+      model.addObject("loginUser", loginUser);
+      model.setViewName("index");
     return model;
   }
 

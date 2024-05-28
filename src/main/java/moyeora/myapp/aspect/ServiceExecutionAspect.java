@@ -33,6 +33,6 @@ public class ServiceExecutionAspect {
         map.put("no", post.getNo());
         map.put("execution", "post");
 
-        kafkaTemplate.send("kafka-elk-test-log", map);
+//        kafkaTemplate.send("kafka-elk-test-log", map);
     }
 }

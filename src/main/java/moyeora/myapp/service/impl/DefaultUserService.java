@@ -56,11 +56,6 @@ public class DefaultUserService implements UserService {
         return userDao.findByEmail(email);
     }
 
-//  @Override
-//  public User get(String email, String password) {
-//    return userDao.findByEmailAndPassword(email, password);
-//  }
-
     @Override
     public String getEmail(String name, String phone) {
         return userDao.findByNameAndPhone(name, phone);
@@ -91,14 +86,11 @@ public class DefaultUserService implements UserService {
     public int update(User user) {
 
         userTagDao.deleteAllUserTagNo(user.getNo());
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@" + user.getNo());
 
 
         if (user.getTagNums() != null && user.getTagNums().size() >= 3) {
             for (int tagNum : user.getTagNums()) {
                 userTagDao.add(tagNum, user.getNo());
-                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@" + tagNum);
-                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@" + user.getNo());
 
             }
         }

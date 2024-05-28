@@ -75,17 +75,13 @@ public class DefaultMyPageService implements MyPageService {
             : followDao.findFollowingByUserNo(followListRequestDTO.getUserNo());
     System.out.println(followListRequestDTO);
     if(followListRequestDTO.getClickUserNo()<=0) {
-      System.out.println("sddasdasdasd");
       return list;
     }
     List<FollowListResponseDTO> myList = followDao.findFollowingByUserNo(followListRequestDTO.getClickUserNo());
-    System.out.println("sddasdasdasd1");
-    System.out.println(myList);
+
     for(FollowListResponseDTO f : list) {
       f.setState(1);
       for(FollowListResponseDTO mf : myList) {
-        System.out.println("sddasdasdasd3");
-        System.out.println(f.getUserNo()+","+mf.getUserNo());
         if(f.getUserNo()== mf.getUserNo()) {
           f.setState(2);
           break;

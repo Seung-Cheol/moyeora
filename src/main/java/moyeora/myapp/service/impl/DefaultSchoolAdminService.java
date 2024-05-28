@@ -81,7 +81,6 @@ public class DefaultSchoolAdminService implements SchoolAdminService {
       schoolDao.update(school);
       for (int tagNum : school.getTagNums()) {
         schoolTagDao.add(tagNum, school.getNo());
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + tagNum);
       }
 
       if (school.getName() == null || school.getName().isEmpty()) {

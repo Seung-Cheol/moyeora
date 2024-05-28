@@ -65,33 +65,23 @@ public class DefaultPostService implements PostService {
     @Transactional
     @Override
     public int update(Post post) {
-        int count = postDao.update(post);
-//    if (post.getFileList() != null && post.getFileList().size() > 0) {
-//      for (AttachedFile attachedFile : post.getFileList()) {
-//        attachedFile.setPostNo(post.getNo());
-//      }
-//      attachedFileDao.addAll(post.getFileList());
-//    }
-        return count;
+        return postDao.update(post);
     }
 
     @Transactional
     @Override
     public int delete(int no, int schoolNo) {
         attachedFileDao.deleteAll(no);
-        // postDao.commentDelete(no);
         return postDao.delete(no, schoolNo);
     }
 
 
-    //스쿨 게시글 상세조회 댓글 관련
     @Override
     public List<Comment> getComments(int no) {
         return commentDao.findByComment(no);
     }
 
 
-    //스쿨 게시글 상세조회 파일목록 관련
     @Override
     public List<AttachedFile> getAttachedFiles(int no) {
         return attachedFileDao.findByPostFiles(no);
@@ -183,16 +173,11 @@ public class DefaultPostService implements PostService {
     return postDao.fixedPost(post);
     }
 
-
-
-
-    // 필터를  내용으로 검색했을 때
     @Override
     public List<Post> findBySchoolContent(int schoolNo, String keyword) {
         return postDao.findBySchoolContent(schoolNo, keyword);
     }
 
-    // 필터를 작성자로 검색했을 때
     public List<Post> findBySchoolUserName(int schoolNo, String keyword) {
         return postDao.findBySchoolUserName(schoolNo, keyword);
     }

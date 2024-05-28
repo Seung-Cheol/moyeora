@@ -66,7 +66,7 @@ public class ControllerExecutionAspect {
         if (request.getParameter("postNo") != null) {
             map.put("postno", request.getParameter("postNo"));
         }
-        kafkaTemplate.send("kafka-elk-test-log", map);
+//        kafkaTemplate.send("kafka-elk-test-log", map);
     }
 
     public Object objectConvert(Object arg) throws Exception {
